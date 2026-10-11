@@ -8,7 +8,7 @@ A phone sends speed commands over Bluetooth Low Energy (BLE) to the HM-10. The M
 
 ### Demo
 
-**[Watch the working project on YouTube](https://youtube.com/shorts/Rp66Ol3cZnw?feature=share)**
+[Watch the working project on YouTube](https://youtube.com/shorts/Rp66Ol3cZnw?feature=share)
 
 ### What it demonstrates
 
