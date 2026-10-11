@@ -1,0 +1,15 @@
+# Generated build and IDE outputs
+Debug/
+Release/
+*.out
+*.elf
+*.map
+*.obj
+*.o
+.metadata/
+.settings/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
