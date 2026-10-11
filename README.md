@@ -6,8 +6,6 @@ A phone sends speed commands over Bluetooth Low Energy (BLE) to the HM-10. The M
 
 ![Conceptual hardware overview showing the motor, L298N, MSP430 LaunchPad, LCD, Bluetooth module and phone](docs/images/system-overview.png)
 
-*System overview from the original project; this is a functional diagram, not a pin-level schematic.*
-
 ### Demo
 
 **[Watch the working project on YouTube](https://youtube.com/shorts/Rp66Ol3cZnw?feature=share)**
@@ -42,15 +40,6 @@ Send **one character** using the DSD Tech Bluetooth terminal app:
 | `B` or `b` | Stop (0%) |
 
 After each valid command, the LCD updates and the MSP430 responds with text such as `speed = 50%`.
-
-### Code and setup
-
-1. See [`docs/wiring.md`](docs/wiring.md) for pin connections and power notes.
-2. Create an MSP430FR2355 project in a compatible TI development environment such as **Code Composer Studio**, then add [`firmware/main.c`](firmware/main.c). The source uses TI's `msp430.h` device definitions.
-3. Verify your board clocks, module voltage levels, motor supply, and I²C backpack address before building and flashing.
-4. Pair/connect to the HM-10 with a compatible BLE terminal; transmit a command from the table above.
-
-For program flow and implementation details, see [`docs/design-notes.md`](docs/design-notes.md). The [original project report](docs/final-project-report.pdf) is retained as source documentation.
 
 ### Project status
 
