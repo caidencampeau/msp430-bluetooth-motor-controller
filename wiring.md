@@ -1,6 +1,4 @@
-# Wiring Reference
 
-The connections below are taken from the project's final report. This is a **pin map**, not a verified production schematic.
 
 ## HM-10 Bluetooth → MSP430FR2355
 
@@ -22,7 +20,7 @@ UART is configured at **9600 baud** in the project firmware.
 | VCC | 3.3 V | LCD supply in the reported build |
 | GND | Common ground | Ground |
 
-The firmware uses I²C address **`0x27`**. Confirm that the specific LCD backpack supports the reported supply and logic levels.
+The firmware uses I²C address **`0x27`**.
 
 ## L298N motor driver → MSP430FR2355
 
@@ -35,14 +33,11 @@ The firmware uses I²C address **`0x27`**. Confirm that the specific LCD backpac
 | GND | Common ground | Motor/control shared ground |
 | `+12V` supply terminal | +9 V battery terminal (original build) | Motor driver input supply |
 
-Direction is set in firmware as **IN1 high, IN2 low**. The project does not implement reverse-direction commands.
+Direction is set in firmware as **IN1 high, IN2 low**.
 
 ## Power notes
 
 - The **MSP430 LaunchPad was USB powered** in the documented build.
 - The **motor/driver were powered by a separate 9 V battery** connected to the L298N supply input.
 - The **battery ground and MSP430 ground were connected together**.
-- The report does not identify the HM-10 VCC source or fully document all level-shifting/pull-up details. Check those requirements before duplicating the wiring.
-- A small rectangular 9 V battery is not generally a robust power source for a DC motor under load; use an appropriately rated supply for extended testing, with a common ground and correct voltage ratings.
-
 For the conceptual diagram, see [`images/system-overview.png`](images/system-overview.png).
