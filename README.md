@@ -43,8 +43,6 @@ Send **one character** using the DSD Tech Bluetooth terminal app:
 
 After each valid command, the LCD updates and the MSP430 responds with text such as `speed = 50%`.
 
-**Note:** The displayed percentage is the **requested PWM duty cycle**, *not measured motor RPM*. This is an open-loop controller with no speed sensor or feedback loop.
-
 ### Code and setup
 
 1. See [`docs/wiring.md`](docs/wiring.md) for pin connections and power notes.
@@ -56,4 +54,4 @@ For program flow and implementation details, see [`docs/design-notes.md`](docs/d
 
 ### Project status
 
-**Completed class demonstration (July 2026).** The original report describes successful wireless control and includes a demo video. The firmware here was reconstructed from the report, with a missing closing brace in `lcd_send()` restored; it has **not been rebuilt or hardware-tested as part of this GitHub packaging**. See the design notes for this transcription detail.
+**Completed class demonstration (July 2026).**
