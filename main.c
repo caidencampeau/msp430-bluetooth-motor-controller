@@ -1,11 +1,3 @@
-/*
- * MSP430FR2355 Bluetooth DC Motor Controller
- *
- * Project firmware transcribed from the final project report (July 22, 2026).
- * The missing closing brace for lcd_send() on report page 6 was restored.
- * The control logic is otherwise unchanged; not revalidated on hardware.
- */
-
 #include <msp430.h>                         // include msp430 file
 
 #define LCD_ADDR 0x27                       // lcd address
