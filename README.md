@@ -1,2 +1,59 @@
-# msp430-bluetooth-motor-controller
-Bluetooth-controlled DC motor using MSP430FR2355, UART, PWM, I2C LCD, and an L298N motor driver.
+# MSP430 Bluetooth DC Motor Controller
+
+**Wireless PWM motor control with an MSP430FR2355, HM-10 Bluetooth module, L298N motor driver, and 16×2 I²C LCD.**
+
+A phone sends speed commands over Bluetooth Low Energy (BLE) to the HM-10. The MSP430 reads those commands over UART, updates the motor's PWM duty cycle, displays the selected percentage on the LCD, and sends a confirmation back to the phone.
+
+![Conceptual hardware overview showing the motor, L298N, MSP430 LaunchPad, LCD, Bluetooth module and phone](docs/images/system-overview.png)
+
+*System overview from the original project; this is a functional diagram, not a pin-level schematic.*
+
+### Demo
+
+**[Watch the working project on YouTube](https://youtube.com/shorts/Rp66Ol3cZnw?feature=share)**
+
+### What it demonstrates
+
+- **Embedded control:** MSP430FR2355 and Timer_B PWM output to the L298N motor driver.
+- **Wireless communication:** HM-10 BLE module interfaced using **9600-baud UART**.
+- **Peripheral integration:** 16×2 LCD through **I²C** (address `0x27`).
+- **Interrupt-driven input:** UART receive interrupt processes new commands; the main loop updates the output and display.
+- **User feedback:** Requested speed percentage shown on the LCD and echoed to the Bluetooth terminal.
+
+### Hardware
+
+| Component | Role |
+| --- | --- |
+| TI MSP-EXP430FR2355 LaunchPad | Main controller |
+| HM-10 BLE UART module | Phone-to-MSP430 command interface |
+| L298N H-bridge module | Motor drive and PWM enable |
+| DC motor (described as 12 V in report) | Controlled load |
+| 16×2 LCD with I²C backpack | Displays duty-cycle percentage |
+| 9 V battery + USB | Original demonstration power arrangement |
+
+### Commands
+
+Send **one character** using the DSD Tech Bluetooth terminal app:
+
+| Input | PWM duty-cycle command |
+| --- | --- |
+| `0`–`9` | 0%, 10%, …, 90% respectively |
+| `A` or `a` | 100% |
+| `B` or `b` | Stop (0%) |
+
+After each valid command, the LCD updates and the MSP430 responds with text such as `speed = 50%`.
+
+**Note:** The displayed percentage is the **requested PWM duty cycle**, *not measured motor RPM*. This is an open-loop controller with no speed sensor or feedback loop.
+
+### Code and setup
+
+1. See [`docs/wiring.md`](docs/wiring.md) for pin connections and power notes.
+2. Create an MSP430FR2355 project in a compatible TI development environment such as **Code Composer Studio**, then add [`firmware/main.c`](firmware/main.c). The source uses TI's `msp430.h` device definitions.
+3. Verify your board clocks, module voltage levels, motor supply, and I²C backpack address before building and flashing.
+4. Pair/connect to the HM-10 with a compatible BLE terminal; transmit a command from the table above.
+
+For program flow and implementation details, see [`docs/design-notes.md`](docs/design-notes.md). The [original project report](docs/final-project-report.pdf) is retained as source documentation.
+
+### Project status
+
+**Completed class demonstration (July 2026).** The original report describes successful wireless control and includes a demo video. The firmware here was reconstructed from the report, with a missing closing brace in `lcd_send()` restored; it has **not been rebuilt or hardware-tested as part of this GitHub packaging**. See the design notes for this transcription detail.
