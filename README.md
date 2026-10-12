@@ -12,11 +12,11 @@ A phone sends speed commands over Bluetooth Low Energy (BLE) to the HM-10. The M
 
 ### What it demonstrates
 
-- **Embedded control:** MSP430FR2355 and Timer_B PWM output to the L298N motor driver.
-- **Wireless communication:** HM-10 BLE module interfaced using **9600-baud UART**.
-- **Peripheral integration:** 16×2 LCD through **I²C** (address `0x27`).
-- **Interrupt-driven input:** UART receive interrupt processes new commands; the main loop updates the output and display.
-- **User feedback:** Requested speed percentage shown on the LCD and echoed to the Bluetooth terminal.
+- Embedded control: MSP430FR2355 and Timer_B PWM output to the L298N motor driver.
+- Wireless communication: HM-10 BLE module interfaced using **9600-baud UART**.
+- Peripheral integration: 16×2 LCD through **I²C** (address `0x27`).
+- Interrupt-driven input: UART receive interrupt processes new commands; the main loop updates the output and display.
+- User feedback: Requested speed percentage shown on the LCD and echoed to the Bluetooth terminal.
 
 ### Hardware
 
@@ -31,7 +31,7 @@ A phone sends speed commands over Bluetooth Low Energy (BLE) to the HM-10. The M
 
 ### Commands
 
-Send **one character** using the DSD Tech Bluetooth terminal app:
+Send one character using the DSD Tech Bluetooth terminal app:
 
 | Input | PWM duty-cycle command |
 | --- | --- |
